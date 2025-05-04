@@ -69,13 +69,17 @@ class StartScreen extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 6),
-                      Text(
-                        "Explore Angi's most popular snack selection and get instantly happy.",
-                        style: InterTextTheme.baseTextTheme.bodySmall?.copyWith(
-                          fontSize: 13,
-                          color: Colors.white.withAlpha(150),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                        child: Text(
+                          "Explore Angi's most popular snack selection and get instantly happy.",
+                          style: InterTextTheme.baseTextTheme.bodyMedium
+                              ?.copyWith(
+                                fontSize: 13,
+                                color: const Color.fromARGB(206, 255, 255, 255),
+                              ),
+                          textAlign: TextAlign.center,
                         ),
-                        textAlign: TextAlign.center,
                       ),
                       SizedBox(height: 30),
                       Material(

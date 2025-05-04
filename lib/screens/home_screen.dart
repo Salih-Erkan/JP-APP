@@ -48,12 +48,12 @@ class HomeScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(height: 16),
+                  SizedBox(height: 24),
                   // Produktkarte: Burger
                   ProductCard(
                     imagePath: 'assets/grafiken/burger.png',
                     title: "Angi's Yummy Burger",
-                    description: "Delish vegan burger that tastes like heaven",
+                    description: "Delish vegan burger\nthat tastes like heaven",
                     price: 13.99,
                   ),
                   SizedBox(height: 30),
@@ -65,7 +65,6 @@ class HomeScreen extends StatelessWidget {
                       color: Colors.white,
                     ),
                   ),
-                  SizedBox(height: 8),
                   // Empfehlungen Grid
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
@@ -82,6 +81,18 @@ class HomeScreen extends StatelessWidget {
                           title: "Balu's Cup",
                           description: "Pistachio ice cream",
                           price: 8.99,
+                        ),
+                        RecommendedCard(
+                          imagePath: 'assets/grafiken/icecream_stick.png',
+                          title: "Smiling David",
+                          description: "Coffee ice cream",
+                          price: 3.99,
+                        ),
+                        RecommendedCard(
+                          imagePath: 'assets/grafiken/icecream_cone.png',
+                          title: "Kai in a Cone",
+                          description: "Vanilla ice cream",
+                          price: 3.99,
                         ),
                         // Weitere Cards hier ...
                       ],

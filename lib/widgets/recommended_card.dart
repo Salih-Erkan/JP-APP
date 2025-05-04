@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../screens/detail_screen.dart';
+import 'package:snackish/theme/inter_text_theme.dart';
+import '../screens/detailScreen/detail_screen.dart';
 
 class RecommendedCard extends StatelessWidget {
   final String imagePath;
@@ -17,6 +18,8 @@ class RecommendedCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final heroTag = 'hero_${title.replaceAll(' ', '_').toLowerCase()}';
+
     return GestureDetector(
       onTap: () {
         showModalBottomSheet(
@@ -29,61 +32,67 @@ class RecommendedCard extends StatelessWidget {
                 description: description,
                 imagePath: imagePath,
                 price: price,
+                heroTag: heroTag,
               ),
         );
       },
       child: Container(
         width: 200,
-        height: 280,
-        margin: EdgeInsets.fromLTRB(0, 16, 16, 16),
-        padding: EdgeInsets.all(16),
+        height: 270,
+        margin: const EdgeInsets.fromLTRB(0, 16, 16, 16),
+        padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          gradient: LinearGradient(
+          gradient: const LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             stops: [0.0, 0.41, 1.0],
             colors: [
-              Color.fromARGB(63, 255, 255, 255), // transparentes Weiß (7%)
-              Color(0xFF908CF5), // 61%
-              Color(0xFF8C5BEA), // 100%
+              Color.fromARGB(63, 255, 255, 255),
+              Color(0xFF908CF5),
+              Color(0xFF8C5BEA),
             ],
           ),
-          border: Border.all(color: Colors.white.withAlpha(100), width: 1.5),
+          border: Border.all(color: Colors.white54, width: 1.5),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Center(
-              child: Image.asset(imagePath, height: 160, fit: BoxFit.contain),
-            ),
-            SizedBox(height: 1),
-            Text(
-              title,
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.white,
-                fontWeight: FontWeight.w700,
+              child: Hero(
+                tag: heroTag,
+                child: Image.asset(imagePath, height: 160, fit: BoxFit.contain),
               ),
             ),
-            SizedBox(height: 4),
+            const SizedBox(height: 1),
+            Text(
+              title,
+              style: InterTextTheme.w700.copyWith(
+                fontSize: 13,
+                color: Colors.white,
+              ),
+            ),
             Text(
               description,
-              style: TextStyle(fontSize: 12, color: Colors.white70),
+              style: const TextStyle(fontSize: 12, color: Colors.white70),
             ),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   '₳ ${price.toStringAsFixed(2)}',
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 14,
                     color: Colors.white,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                Icon(Icons.favorite_border, size: 16, color: Colors.white54),
+                const Icon(
+                  Icons.favorite_border,
+                  size: 16,
+                  color: Colors.white54,
+                ),
               ],
             ),
           ],
